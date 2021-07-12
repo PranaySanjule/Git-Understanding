@@ -1,0 +1,98 @@
+// Back slash for comments
+
+git config --global user.name Pranay	// command to set name
+git config --global user.email sanjulepranay0628@gmai.com  //command to set email
+git congig --global user.email // to check mail
+git config --global user.name // to check name
+
+code . //to open VS CODE
+
+To get repository, we will use init command or cloning.
+
+1)cloning ==> Cloning means all code are coming in your local from server.
+2)Init(Initialisation) ==> If you are initialise any folder it means you are beginning / starting. (shuru se start kr rahe ho)
+
+
+<========How to Initialise (commands for initialise)==========>
+
+git init // to initialise repository
+ls -lart // this command show all your hidden folders & it makes .git folder
+
+// make any file using VS code or from any other like index.html or index.txt
+
+git status // command to check status or show all files like untracked are present
+
+
+---There are 4 Stages add file on git ----
+1. Untracked	// In this method file track into Stage
+2. Unmodified	// If file is unmodified then it present in it else u modified the file then it will go into Modified Area.  
+
+3. Modified	// In this area modified files are present
+4. Stage	// from stage commit file and then it add in unmodified area
+
+
+git add file_name // command to add file on git means to track
+
+git status // if file succesfully track check using this command green line occur
+
+git commit + enter // command to commit file or it is also called initial commit
+
+-----VIM EDITOR WILL OPEN AFTER ENTER git commit -----
+vim editor commads
+
+i // to insert
+Initial commit // type this line at top in vim
+esc + : + wq + enter // to exit vim editor
+
+----vim exit----
+
+git status // check status again
+touch about.html // touch command to make blank file
+git stutus
+
+// Files not track so track your file
+
+git add -A //command to add all files in stage area 
+
+git status // check the now all red lines convert into green
+
+// Now all files are in staging area
+--> Staging Area means stand on post
+--> Commit means photos are clicked of file system
+// Then now files are ready for SNAPSHOT of file system
+
+code . //open code and edit file 
+git status // status show file is/are modified in red line the file which modified
+
+// Now in staging area previous file(about.html which is not modified) shown
+// In Modified area new file(about.html which is modified) are shown
+
+git add -A // to add all files with is modified file and all files show green
+
+-------Shortcut to commit without using VIM EDITOR---------
+
+git commit -m "Added more htmls"
+
+//if any file is remove or remove code use below command
+git checkout file_name // to get old particular file(previous commit) or code modified in upadated way.
+   
+git checkout -f // command to get or match all previous files (previous commit) or code which is modifed by mistake
+
+git stutus // check status means all files return
+
+			-----------GIT LOG-------
+
+git log // commad show all your data i.e autor name , email , time , date, commits
+
+git log -p -no_of_commit // eg. git log -p -2 ==> command to view all commit history
+
+git status
+		`	 -----------GIT DIFF---------
+code . // edit any file
+git status // status show file is modified
+git diff // Now this diff compare working tree with staging area
+git add -A
+git diff // nothing will show because working directory & staging area is same
+code . // again edit file
+git diff --staged // command to compare staging with last commit
+git status
