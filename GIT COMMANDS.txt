@@ -342,7 +342,7 @@ Using this all access I want to redirect automatically my all computers work on 
 
 To redirect, we need to deploy one ssh key
 
-step 9 => In SSH and GPG keys click on gnerating SSH keys
+step 9 => In SSH and GPG keys click on generating SSH keys
 
 step 10 => In the Connecting to GitHub with SSH go to the Geenerating a new SSH key and adding it to the ssh-agent
 
