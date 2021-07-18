@@ -1,0 +1,419 @@
+// Back slash for comments
+
+git config --global user.name Pranay	// command to set name
+git config --global user.email sanjulepranay0628@gmai.com  //command to set email
+git config --global user.email // to check mail
+git config --global user.name // to check name
+
+code . //to open VS CODE
+
+To get repository, we will use init command or cloning.
+
+1)cloning ==> Cloning means all code are coming in your local from server.
+2)Init(Initialisation) ==> If you are initialise any folder it means you are beginning / starting. (shuru se start kr rahe ho)
+
+
+<========How to Initialise (commands for initialise)==========>
+
+git init // to initialise repository
+ls -lart // this command show all your hidden folders & it makes .git folder
+
+// make any file using VS code or from any other like index.html or index.txt
+
+git status // command to check status or show all files like untracked are present
+
+
+---There are 4 Stages add file on git ----
+1. Untracked	// In this method file track into Stage
+2. Unmodified	// If file is unmodified then it present in it else u modified the file then it will go into Modified Area.  
+
+3. Modified	// In this area modified files are present
+4. Stage	// from stage commit file and then it add in unmodified area
+
+
+git add file_name // command to add file on git means to track
+
+git status // if file succesfully track check using this command green line occur
+
+git commit + enter // command to commit file or it is also called initial commit
+
+-----VIM EDITOR WILL OPEN AFTER ENTER git commit -----
+vim editor commads
+
+i // to insert
+Initial commit // type this line at top in vim
+esc + : + wq + enter // to exit vim editor
+
+----vim exit----
+
+git status // check status again
+touch about.html // touch command to make blank file
+git status
+
+// Files not track so track your file
+
+git add -A //command to add all files in stage area 
+
+git status // check the now all red lines convert into green
+
+// Now all files are in staging area
+--> Staging Area means stand on post
+--> Commit means photos are clicked of file system
+// Then now files are ready for SNAPSHOT of file system
+
+code . //open code and edit file 
+git status // status show file is/are modified in red line the file which modified
+
+// Now in staging area previous file(about.html which is not modified) shown
+// In Modified area new file(about.html which is modified) are shown
+
+git add -A // to add all files with is modified file and all files show green
+
+-------Shortcut to commit without using VIM EDITOR---------
+
+git commit -m "Added more htmls"
+
+//if any file is remove or remove code use below command
+git checkout file_name // to get old particular file(previous commit) or code modified in upadated way.
+   
+git checkout -f // command to get or match all previous files (previous commit) or code which is modifed by mistake
+
+git status // check status means all files return
+
+			-----------GIT LOG-------
+
+git log // commad show all your data i.e autor name , email , time , date, commits
+
+git log -p -no_of_commit // eg. git log -p -2 ==> command to view all commit history
+
+git status
+		`	 -----------GIT DIFF---------
+code . // edit any file
+git status // status show file is modified
+git diff // Now this diff compare working tree with staging area
+git add -A
+git diff // nothing will show because working directory & staging area is same
+code . // again edit file
+git diff --staged // command to compare staging with last commit
+git status
+
+Summary of GIT DIFF
+1) git diff : It is use to compare working tree with staging area
+2) git diff --staged : It is use to compare staging area with last commit
+
+				------------
+
+     -------Method to commit all files without adding in staging area--------
+
+In the previous method, we were first adding the files in staging area then only we coommit.
+But in this new method, we directly committing all files by skipping staging area
+
+commands :-
+
+code . // edit any which means modified show in status
+git status // red line of modified
+git commit -a -m "Skipped stagging and fixed <" // Imp command for commit by skip staging area
+
+git log // It show Skipped stagging and fixed lines
+git status // show nothing to commit, working tree clean
+
+				-----------
+
+git status
+ls // it is a unix command and git bash it list all the files
+
+		-------Command to remove waste file---------
+touch waste.html // if by mistake waste file create then to remove file
+git add -A //command to add in staging area and then track
+git commit -a -m "Adding waste" // to commit file
+ls 
+git rm --cached waste.html// command to remove file from only staging area
+git status // showing deleted waste.html file 
+git add -A // first commit all files
+git status // show nothing to commit , working tree clean
+ls // list all the files (waste.html file also present in it bcoz commit all files)
+git rm waste.html //Permanantly delete waste.html
+git status // showing waste.html is deleted
+ls // showing all files except waste.html
+git commit -a -m"Removing waste"
+git status // showing nothing to commit, working tree clean
+git log -p -2 // showing previous 2 commits
+
+summary :
+git rm --cached file_name // command to add file in untracked area
+git rm file_name // command to permanently delete waste files
+
+			-------------
+		M = MODIFIED
+git status
+git status -s
+code . // edit the file
+g status -s
+git add edit_file_name // command to add edit file in the commit
+
+// GREEN (M) edit_file_name shows file commit but remaining file which is not edit those file show file is not edit and it is denoted in RED (M)
+
+code . //change file which you previous edited
+git status -s // command show status like red and green m both same
+
+git add index.html // command to commit file
+			--------------
+		--------GIT IGNORE---------
+touch .gitignore //file created .gitignore
+
+.gitignore file used to ignore all file which name we written in it.
+
+PUSH : Push means send file on server
+PULL : Pull means get file from server
+
+git status // modified file will show
+git checkout index.html // undo file
+
+touch mylogs.log // new file created
+
+//Now then add file mylogs.log in .gitignore to ignore the file from any location (simply write name of file in .gitignore to ignore file)
+
+git add -A // add all files in staging area except mylogs.log bcoz it is in .gitignore file so it ingore from any location
+
+git status // status shows only those file which you modified or create new except mylogs.log
+
+git commit -a -m "ignored some files and added gitignore" // comomand to ignore some files and added gitignore
+
+git status // status like nothing to commit, working tree clean
+
+// file ==> gitignore ==> type =>  *.log (it is use to ignore all .log extension files
+
+// file ==> gitignore ==> type => /mylogs.log (it means only from particular folder(/mylogs) .log file ignore)
+
+git status //check status 
+git add -A //Add files in staging
+
+make new folder ignore // empty folder
+git status // show ignore is empty but i want to ignore file
+update .gitignore => ignore/		//command to  ignore folder(ignore)
+
+git status // showing modified files or nothing to commit if you already commited
+
+git add -A // To add file if the is not track
+
+git commit -a -m "commit message" // to commit all files
+
+git log -p -3 // check all logs(what you did) up arrow key and down arrow key showing all logs(what you did)
+
+press q to quit
+
+				---------------
+
+Next topic branches
+
+git status //check status
+
+//On branch master nothing to commit, working tree ==> Meaning : master by default it is a main branch
+
+git branch feature1 // to add branch(it means feature1 branch added)
+git branch	// to check in which branch you r present now currently
+git checkout feature1 // switch to branch feature1
+git status //showing there is nothing to commit in feature1
+
+//Now from current file of master branch, We can do our own work by changing the file of master file in feature branch. Simply it means we can change master file but without doing any changes in master branch bcoz we all doing changes in feature branch not in master.
+// ISKA SIMPLE MATLAB HAI AGAR COMPANY KA KOI IMP PROJECT HAI LIKE WEBSITE AUR MAI USME KUCH CHANGES KRNA CHAHTA HU PR AGAR KOI GADBAD HO GAYI TOH MERI JOB GAYI SO USKA SOLUTION HAI ALAG KOI BRANCH BANANA JAISE FEATURE BRANCH AUR MASTER BRANCH YE COMPANY KE IMP FILES RAKTI ISLIYE JITNA KAAM HUWA HAI MASTER BRANCH MAI WAHA SE MAI APNA KAAM NAYA FEATURE BRANCH MAI KR SKTA WITHOUT ANY CHANGES IN FEATURE BRANCH. SO FOR THIS WE USE BRANCH.
+//AGAR FEATURE1 KO MAINE BOHOT ACHA BANA DIYA AUR BOSS KO DIKHAYA TOH PHIR MASTER BOLE KI ABHI TUMHARI FEATURE1 MASTER SE ACHI HAI TOH TUM MERGE KRDO
+
+code . //edit any file
+git status // showing modified msg of edit file
+git add -A //add modified file in staging area
+git commit -m "Fixed extra brackets" //commit all files with msg "Fixed extra brackets"
+
+but suppose in previous file I need some changes of previous file so use below commnd
+
+git checkout master // now my all changes fixed means previous file came
+
+now changes required of past feature branch but do more different changes with it so use this command
+
+git checkout feature1
+
+//go in file you will see feature1 branch file will create 
+// add comment in the file like "This file has been fixed by Pranay on feature1
+//save changes
+
+git commit -a -m "Added comment"
+git checkout master
+git status
+git checkout feature1
+git status
+
+------Merge file in master--------
+
+git checkout master //go to master branch
+git log -p -2 //check last two message
+
+I want to merge the changes which I done in feature1 branch
+
+git merge feature1 //to merge file in master branch
+git log -p -2 // to check all the commit which you done in feature1 branch
+	
+git branch // showing all branches and in which branch you are now
+git checkout feature1 // go in feature1 branch
+git branch //sowing all branches and in which branch you are now
+git checkout master // go to master branch
+git branch // showing all branches and in which branch you are now
+git checkout -b flaskIntegeration // created new branch flaskIntegeration 
+git branch // showing all branches and in which branch you are now (flaskIntegeration)
+
+for doing work in flaskIntegration make any file and any code in file
+
+git status //now it's showing new file added
+git add -A // add in staging area
+git commit -m "Added flask minimal file" // commit the file
+
+git checkout master // now master branch is open
+
+//edit any file
+git status //showing all modified file
+git commit -a -m "modified file" //to commit
+
+NOTE : Don't use any message in commit like "modified file" bcoz it gives bad impression so try to add only Valuable Message
+
+  
+git checkout flaskIntegration // Showing all created file of flaskIntegration
+
+git status 
+
+exit
+
+
+			---------GIT HUB TUTORIAL------------
+		Create a new repository
+
+open www.github.com // make accout on it 
+after open the account in github.com
+click on '+' and go to create a new repository
+steps to create repository
+step 1 => Fill Repository Name
+step 2 => Fill Description of repository
+step 3 => Check on private repository (personal) or Public repository.
+step 4 => Create Repository
+
+			In git bash terminal
+
+git status
+git checkout master // to switch in master branch
+git status // On branch nothing to commit, working tree clean
+clear 
+
+
+			In the Remote Repository
+
+after create repository 1 remote repository also create with it.
+so in this remote repository we have to PUSH our local repository(git bash repository) then our local repository will go on github.
+
+	Connect local git repository & remote repository
+
+Now, Simply I can add remote repository with local, to add repository follow below steps 
+
+Remote means it is type of URL on which we can host our repository
+
+step 1 => copy the URL command from github.com created repository
+	command like "git remote add origin https://github.com/PranaySanjule/Git-Understanding.git"
+
+above command means add one URL of origin, now URL name is origin it means simply I short the url with 'origin' name.
+
+step 2 => Paste this above command in git bash terminal which is our local git bash terminal & Press Enter
+
+step 3 => Now our repository added succesfully
+
+step 4 => git remote //command to check remote (now my remote is origin)
+
+step 5 => git remote -v //showing URL from which you fetching and from which you are pushing
+
+Now git remote is added
+
+step 6 => git push origin master
+//above command saying push master branch in the origin of github
+//But after enter, it will show that this repository not found, and this error is showing bcoz why github showing the private repository of others exists or not bcoz it's a private repository
+
+step 7 => Now what you are doing simply get READ WRITE ACCESS on repository
+
+step 8 => To get access go to the settings of github.com ==> In the setting go to the SSH and GPG keys.
+
+In the SSH and GPG keys there is one guide of generating SSH keys
+Now using this ssh key, we can give access of our github account to our computer.
+Using this all access I want to redirect automatically my all computers work on github account
+
+To redirect, we need to deploy one ssh key
+
+step 9 => In SSH and GPG keys click on gnerating SSH keys
+
+step 10 => In the Connecting to GitHub with SSH go to the Geenerating a new SSH key and adding it to the ssh-agent
+
+step 11 => copy the command and paste in git bash
+
+Note : copy command without $ sign
+
+ssh-keygen -t ed25519 -C "your_email@example.com" //command for legacy system Ed25519 algorithm
+
+ssh-keygen -t rsa -b 4096 -C "sanjulepranay0628@gmail.com" // If you are using a legacy system that doesn't support the Ed25519 algorithm then use this command
+
+eval "$(ssh-agent -s)" // run this command to get agent key process id
+
+ssh-add ~/.ssh/id_ed25519 // use this to add ssh (for legacy system)
+or
+ssh-add ~/.ssh/id_rsa // if legacy system not working
+
+Now we have to add means deploy ssh key on gihub account 
+
+step 12 => go to Adding a new SSH key to your GitHub account and copy this command "~/.ssh/id_ed25519.pub" and paste in git bash with adding cat before the command like "cat ~/.ssh/id_ed25519.pub" then enter
+
+cat command : showing all the content of it.
+
+step 13 : copy all line like 
+"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID1EgkESvyUiYf2M/ha1+HB7+zUW2UP5pzDB7tTsDFH6 sanjulepranay0628@gmail.com
+"
+
+step 14 : go to the SSH and GPG keys => go to the new SSH key => then paste the complete line in the second box
+
+step 15 : Add title carefully bcoz of it you will knowing that which computer key you were added => after giving the title => click on add SSH key
+
+Now your ssh key added succesfully you have read/write acces
+
+step 16 : git push -u origin master // giving error
+
+then set the url means change the url, to change go to the next tab of create repository in that tab switch from HTTPS to SSH and copy th URL and paste with below command 
+
+step 17 : git remote set-url origin above_URL 
+
+step 18 : git remote // showing origin
+
+step 19 : git remote -v //showing URL is changed
+
+step 20 : git push -u origin master // Now master branch pushed successfully
+
+take little time to push 
+
+Push another branches like flaskIntegration using this command
+
+git push -u origin flaskIntegration // flaskIntegratin branch push succesfully
+
+go to the CODE and you can PULL REQUEST
+
+PULL REQUEST => Pull request basically ek request jo ki aap maarte hai repository ke owner ko kehte hai ki hum ye pull request open krna chahte hai(code ko change krna chahte hai) aapke code ko improve krna chahte hai phir wo banda(owner approve) krke ye kaam kr denga
+
+		-------Extra Knowlegde---------
+1.
+git push // Pushing in flaskIntegration
+git push -u origin master // Now it pushing in origin master
+git push // now this command always push in origin master bcoz previous command I used for origin master and no need to write -u origin...
+
+	This is the difference 
+
+git push -u origin flaskIntegration // now it's always push in flaskIntegration
+git push // always push in flaskIntegration
+
+2.
+GIT CLONE 
+
+step 1 : Make any folder
+step 2 : search any blog then view the repository
+step 3 : click on clone or download then you will get URL => Copy the URL	
+step 4 : git clone paste_URL any_folder_name // any folder name to add repo in that folder
+step 5 : enter
